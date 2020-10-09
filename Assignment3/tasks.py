@@ -3,7 +3,8 @@ import json
 import re
 from celery import Celery
 
-app = Celery('tasks', backend='rpc://', broker='pyamqp://')
+broker_url = 'amqp://raheel:raheelpassword@192.168.2.94:5672/raheelhost'
+app = Celery('tasks', backend='rpc://', broker=broker_url)
 
 @app.task
 def CountWords(fileToProcess):
